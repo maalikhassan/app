@@ -15,7 +15,6 @@ let pageNum = 1;
 let readyState = false;
 let peerReadyState = false;
 let notesContent = '';
-const scale = 1.5; // Adjusted scale for clearer rendering
 
 fileInput.addEventListener('change', (event) => {
   const file = event.target.files[0];
@@ -38,7 +37,7 @@ fileInput.addEventListener('change', (event) => {
 
 function renderPage(num) {
   pdfDoc.getPage(num).then(page => {
-    const viewport = page.getViewport({ scale: scale });
+    const viewport = page.getViewport({ scale: 1 });
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
     canvas.height = viewport.height;
@@ -122,7 +121,7 @@ socket.onmessage = (event) => {
 };
 
 function sendPageUpdate() {
-  if (readyState && peerReadyState && socket.readyState === WebSocket.OPEN) {
+  if (socket.readyState === WebSocket.OPEN) {
     socket.send(JSON.stringify({
       type: 'page-update',
       pageNum: pageNum
