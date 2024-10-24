@@ -131,6 +131,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
   <script>
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js';
+    const username = "defaultUsername"; // Set your default username
+    const password = "defaultPassword"; // Set your default password
+    const loginButton = document.getElementById('login-button');
+    const pageNumberInput = document.getElementById('page-number');
+    const goToPageButton = document.getElementById('go-to-page-button');
   </script>
 </head>
 <body>
@@ -168,9 +173,64 @@
     const zoomInButton = document.getElementById('zoom-in');
     const zoomOutButton = document.getElementById('zoom-out');
     let scale = 1;
+    let pageNum = 1; // Keep track of current page number
+    loginButton.addEventListener('click', () => {
+      const enteredUsername = document.getElementById('username').value;
+      const enteredPassword = document.getElementById('password').value;
 
-    const username = "defaultUsername"; // Set your default username
-    const password = "defaultPassword"; // Set your default password
-    const loginButton = document.getElementById('login-button');
-    const pageNumberInput = document.getElementById('page-number');
-    const goToPageButton = document.getElementById('go-to-page-button');
+      if (enteredUsername === username && enteredPassword === password) {
+        document.querySelector('.auth-section').style.display = 'none';
+        document.getElementById('file-input').style.display = 'block';
+        document.getElementById('pdf-container').style.display = 'block';
+        document.getElementById('progress-bar').style.display = 'block';
+        document.querySelector('.nav-buttons').style.display = 'flex';
+        document.querySelector('.zoom-buttons').style.display = 'flex';
+        document.getElementById('notes-section').style.display = 'block';
+      } else {
+        alert('Incorrect username or password!');
+      }
+    });
+
+    if (isMobile) {
+      zoomInButton.addEventListener('click', () => {
+        scale = Math.min(scale + 0.1, 3);
+        renderPage(pageNum, scale); // Update renderPage to accept scale
+      });
+
+      zoomOutButton.addEventListener('click', () => {
+        scale = Math.max(scale - 0.1, 0.5);
+        renderPage(pageNum, scale); // Update renderPage to accept scale
+      });
+    }
+
+    goToPageButton.addEventListener('click', () => {
+      pageNum = parseInt(pageNumberInput.value);
+      if (!isNaN(pageNum) && pageNum > 0 && pageNum <= pdfDoc.numPages) {
+        renderPage(pageNum, scale);
+        updateProgressBar(); // Update progress bar
+      } else {
+        alert('Invalid page number!');
+      }
+    });
+
+    function updateProgressBar() {
+      const progress = (pageNum / pdfDoc.numPages) * 100;
+      document.getElementById('progress').style.width = `${progress}%`;
+    }
+
+    function renderPage(num, scale = 1) {
+      pdfDoc.getPage(num).then(page => {
+        const viewport = page.getViewport({ scale: scale });
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+        pdfContainer.innerHTML = '';
+        pdfContainer.appendChild(canvas);
+        pdfContainer.appendChild(cursorLayer); // Ensure cursor layer is always on top
+        page.render({ canvasContext: context, viewport: viewport });
+      });
+    }
+  </script>
+</body>
+</html>
