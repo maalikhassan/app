@@ -35,7 +35,6 @@ fileInput.addEventListener('change', (event) => {
     reader.readAsArrayBuffer(file);
   }
 });
-
 function renderPage(num) {
   pdfDoc.getPage(num).then(page => {
     const viewport = page.getViewport({ scale: 1 });
@@ -67,7 +66,6 @@ nextPageButton.addEventListener('click', () => {
     updateProgressBar();
   }
 });
-
 document.addEventListener('keydown', (event) => {
   if (event.key === 'ArrowRight' && pageNum < pdfDoc.numPages) {
     pageNum++;
@@ -101,7 +99,6 @@ pdfContainer.addEventListener('mousemove', (event) => {
     sendCursorUpdate(x, y);
   }
 });
-
 socket.onopen = () => {
   console.log('WebSocket connection established.');
 };
