@@ -393,61 +393,236 @@
       }
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
       .main-container {
         flex-direction: column;
+        gap: 10px;
+        padding: 10px;
       }
 
       .pdf-panel {
         flex: 1;
+        min-height: 500px;
       }
 
       .sidebar {
         width: 100%;
-        max-height: 300px;
+        max-height: 350px;
         flex-direction: row;
-        gap: 15px;
       }
 
       .sidebar-section {
         flex: 1;
         min-height: 0;
       }
-
-      #chat-container {
-        min-height: 200px;
-      }
     }
 
-    @media (max-width: 600px) {
-      header {
-        font-size: 18px;
-        padding: 10px 15px;
+    @media (max-width: 768px) {
+      body {
+        overflow: auto;
       }
 
       .main-container {
-        padding: 10px;
-        gap: 10px;
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px;
       }
 
-      .pdf-header, .pdf-footer {
+      .pdf-panel {
+        flex: 0 0 auto;
+        min-height: 400px;
+      }
+
+      header {
+        font-size: 18px;
+        padding: 10px 12px;
+      }
+
+      .sidebar {
+        width: 100%;
+        max-height: none;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .sidebar-section {
+        flex: 0 0 auto;
+      }
+
+      .pdf-header {
         padding: 10px;
         flex-wrap: wrap;
+      }
+
+      .pdf-footer {
+        padding: 10px;
+        flex-wrap: wrap;
+        gap: 8px;
       }
 
       .controls {
         width: 100%;
         flex-wrap: wrap;
+        gap: 6px;
       }
 
-      .sidebar {
-        max-height: none;
-        flex-direction: column;
+      #progress-bar {
+        order: 3;
+        width: 100%;
+        min-width: 100%;
+      }
+
+      .page-info {
+        order: 2;
       }
 
       button {
         padding: 8px 12px;
         font-size: 12px;
+        flex: 1 1 auto;
+        min-width: 60px;
+      }
+
+      #ready-button {
+        width: 100%;
+      }
+
+      #notes {
+        height: 100px;
+      }
+
+      #chat-container {
+        min-height: 200px;
+      }
+
+      #messages {
+        padding: 8px;
+        gap: 6px;
+      }
+
+      .message {
+        font-size: 11px;
+        padding: 8px 10px;
+      }
+
+      #chat-input-area {
+        padding: 8px;
+        gap: 6px;
+      }
+
+      #chat-input {
+        height: 32px;
+        font-size: 11px;
+      }
+
+      #send-button {
+        padding: 6px 12px;
+        font-size: 11px;
+      }
+
+      .sidebar-title {
+        font-size: 11px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        font-size: 16px;
+        padding: 8px 10px;
+      }
+
+      .main-container {
+        padding: 5px;
+        gap: 5px;
+      }
+
+      .pdf-panel {
+        min-height: 300px;
+      }
+
+      .pdf-header,
+      .pdf-footer {
+        padding: 8px;
+        gap: 5px;
+      }
+
+      .pdf-info {
+        font-size: 12px;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      #file-input {
+        padding: 6px;
+        font-size: 11px;
+      }
+
+      .controls {
+        width: 100%;
+        gap: 4px;
+      }
+
+      button {
+        padding: 6px 10px;
+        font-size: 11px;
+        flex: 1 1 45%;
+      }
+
+      #pdf-container {
+        padding: 10px;
+      }
+
+      .sidebar-section {
+        padding: 10px;
+      }
+
+      .sidebar-title {
+        font-size: 10px;
+      }
+
+      #notes {
+        height: 80px;
+        font-size: 11px;
+        padding: 8px;
+      }
+
+      #device-info {
+        font-size: 11px;
+        padding: 8px;
+      }
+
+      #messages {
+        padding: 6px;
+        gap: 4px;
+      }
+
+      .message {
+        font-size: 10px;
+        padding: 6px 8px;
+      }
+
+      .message-sender {
+        font-size: 9px;
+      }
+
+      .message-time {
+        font-size: 9px;
+      }
+
+      #chat-input-area {
+        padding: 6px;
+        gap: 4px;
+      }
+
+      #chat-input {
+        height: 28px;
+        font-size: 10px;
+        padding: 6px;
+      }
+
+      #send-button {
+        padding: 6px 10px;
+        font-size: 10px;
       }
     }
   </style>

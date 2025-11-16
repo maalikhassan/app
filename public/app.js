@@ -23,7 +23,7 @@ const deviceId = 'Device-' + Math.random().toString(36).substr(2, 9).toUpperCase
 
 let pdfDoc = null;
 let pageNum = 1;
-let scale = 1;
+let scale = 1.5;
 let readyState = false;
 let peerReadyState = false;
 let notesContent = '';
@@ -53,17 +53,24 @@ fileInput.addEventListener('change', (event) => {
   }
 });
 
-function renderPage(num, pageScale = 1) {
+function renderPage(num, pageScale = 1.5) {
   if (!pdfDoc) return;
   
   pdfDoc.getPage(num).then(page => {
-    const viewport = page.getViewport({ scale: pageScale });
+    // Use higher DPI for better clarity on high-resolution displays
+    const devicePixelRatio = window.devicePixelRatio || 1;
+    const effectiveScale = pageScale * devicePixelRatio;
+    const viewport = page.getViewport({ scale: effectiveScale });
+    
     const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
+    const context = canvas.getContext('2d', { alpha: false });
+    
     canvas.height = viewport.height;
     canvas.width = viewport.width;
     canvas.style.display = 'block';
     canvas.style.margin = '0 auto';
+    canvas.style.maxWidth = '100%';
+    canvas.style.height = 'auto';
     
     pdfContainer.innerHTML = '';
     pdfContainer.appendChild(canvas);
