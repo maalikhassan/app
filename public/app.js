@@ -77,6 +77,12 @@ function renderPage(num, pageScale = 1) {
     page.render(renderContext).promise.catch(error => {
       console.error('Error rendering page:', error);
     });
+
+    // Update page number display
+    const pageNumberDisplay = document.getElementById('page-number');
+    if (pageNumberDisplay) {
+      pageNumberDisplay.textContent = `${num} / ${pdfDoc.numPages}`;
+    }
   }).catch(error => {
     console.error('Error getting page:', error);
   });
