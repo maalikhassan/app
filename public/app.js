@@ -130,8 +130,18 @@ document.addEventListener('keydown', (event) => {
 });
 
 readyButton.addEventListener('click', () => {
-  readyState = true;
+  readyState = !readyState;
   console.log('Ready button clicked:', readyState);
+  
+  // Update button visual state
+  if (readyState) {
+    readyButton.classList.add('active');
+    readyButton.textContent = '✓ Ready (Waiting for Partner)';
+  } else {
+    readyButton.classList.remove('active');
+    readyButton.textContent = 'Ready to Turn Page';
+  }
+  
   sendReadyState();
 });
 notes.addEventListener('input', (event) => {
@@ -212,10 +222,15 @@ function checkIfBothReady() {
   if (readyState && peerReadyState) {
     readyState = false;
     peerReadyState = false;
+    
+    // Reset button state
+    readyButton.classList.remove('active');
+    readyButton.textContent = 'Ready to Turn Page';
+    
     console.log('Both users are ready');
-    if (pageNum < pdfDoc.numPages) {
+    if (pdfDoc && pageNum < pdfDoc.numPages) {
       pageNum++;
-      renderPage(pageNum);
+      renderPage(pageNum, scale);
       sendPageUpdate();
       updateProgressBar();
     }
@@ -289,6 +304,32 @@ function displayReceivedMessage(senderDeviceId, message, timestamp) {
   `;
   messagesContainer.appendChild(messageDiv);
   messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  
+  // Show notification toast
+  showMessageNotification(senderDeviceId, message);
+}
+
+function showMessageNotification(senderDeviceId, message) {
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = 'message-notification';
+  notification.innerHTML = `
+    <div class="notification-content">
+      <div class="notification-sender">💬 ${senderDeviceId}</div>
+      <div class="notification-message">${message.substring(0, 60)}${message.length > 60 ? '...' : ''}</div>
+    </div>
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Animate in
+  setTimeout(() => notification.classList.add('show'), 10);
+  
+  // Auto remove after 4 seconds
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => notification.remove(), 300);
+  }, 4000);
 }
 
 function escapeHtml(text) {
