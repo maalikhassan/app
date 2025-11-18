@@ -169,6 +169,8 @@ socket.onmessage = (event) => {
     pageNum = data.pageNum;
     renderPage(pageNum, scale);
     updateProgressBar();
+    // Reset ready button when page changes
+    resetReadyButton();
   } else if (data.type === 'ready-state') {
     peerReadyState = data.readyState;
     checkIfBothReady();
@@ -235,6 +237,13 @@ function checkIfBothReady() {
       updateProgressBar();
     }
   }
+}
+
+function resetReadyButton() {
+  // Reset button state from any state
+  readyState = false;
+  readyButton.classList.remove('active');
+  readyButton.textContent = 'Ready to Turn Page';
 }
 
 function updateProgressBar() {
