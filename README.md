@@ -1,5 +1,7 @@
 # Shared Reading Tool 📚
 
+🌐 **[Live Demo](https://app-oblg.onrender.com/)** - Try it out now!
+
 ## The Origin Story
 
 Ever got one of those 3am lightbulb moments? 
@@ -38,6 +40,11 @@ Perfect for book clubs, study groups, remote reading sessions, or just reading w
 - **Frontend**: Vanilla JavaScript, HTML5, CSS3
 
 ## Installation
+
+### Option 1: Use the Deployed Version
+Simply visit **[https://app-oblg.onrender.com/](https://app-oblg.onrender.com/)** and start reading together!
+
+### Option 2: Run Locally
 
 1. **Clone the repository**
    ```bash
