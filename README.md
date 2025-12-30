@@ -1,11 +1,5 @@
 # Shared Reading Tool 📚
 
-## 🚀 Live Demo
-
-**Try the app here:** [Click to view Live App](https://app-oblg.onrender.com/)
-
-*(Note: It may take a minute to wake up as it is hosted on a free tier)*
-
 ## The Origin Story
 
 Ever got one of those 3am lightbulb moments? 
@@ -42,6 +36,12 @@ Perfect for book clubs, study groups, remote reading sessions, or just reading w
 - **WebSockets**: ws library for real-time communication
 - **PDF Rendering**: PDF.js
 - **Frontend**: Vanilla JavaScript, HTML5, CSS3
+
+## 🚀 Live Demo
+
+**Try the app here:** [Click to view Live App](https://app-oblg.onrender.com/)
+
+*(Note: It may take a minute to wake up as it is hosted on a free tier)*
 
 ## Local Installation (For Developers)
 
