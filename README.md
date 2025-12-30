@@ -28,7 +28,8 @@ Perfect for book clubs, study groups, remote reading sessions, or just reading w
 - 🔄 WebSocket-based synchronization
 - 🎨 Clean, modern interface
 - 📱 Responsive design
-- 🚀 Lightweight and fast
+- � **Progressive Web App (PWA)** - Install on your device and use like a native app
+- �🚀 Lightweight and fast
 
 ## Tech Stack
 
@@ -71,10 +72,25 @@ If you want to run this code on your own machine:
 ## Usage
 
 1. Open the **[Live Demo link](https://app-oblg.onrender.com/)**.
-2. Share the URL with a friend (or open it in a second tab).
-3. Upload a PDF file.
-4. All connected users will see the same PDF instantly!
-5. Use the chat panel to discuss while you read.
+2. **Install as an app** (optional): On mobile, tap "Add to Home Screen" or on desktop, look for the install icon in the address bar.
+3. Share the URL with a friend (or open it in a second tab).
+4. Upload a PDF file.
+5. All connected users will see the same PDF instantly!
+6. Use the chat panel to discuss while you read.
+
+### 📲 PWA Installation
+
+This app works as a **Progressive Web App (PWA)**, which means you can install it on your device:
+
+- **On Mobile (iOS/Android)**: 
+  - Open the app in Safari (iOS) or Chrome (Android)
+  - Tap the share button and select "Add to Home Screen"
+  - The app will open fullscreen without the browser's URL bar!
+
+- **On Desktop**:
+  - Look for the install icon (⊕) in your browser's address bar
+  - Click it to install the app on your computer
+  - Launch it like any other app!
 
 ## How It Works
 
