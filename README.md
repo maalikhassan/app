@@ -1,6 +1,10 @@
 # Shared Reading Tool 📚
 
-🌐 **[Live Demo](https://app-oblg.onrender.com/)** - Try it out now!
+## 🚀 Live Demo
+
+**Try the app here:** [Click to view Live App](https://app-oblg.onrender.com/)
+
+*(Note: It may take a minute to wake up as it is hosted on a free tier)*
 
 ## The Origin Story
 
@@ -39,17 +43,14 @@ Perfect for book clubs, study groups, remote reading sessions, or just reading w
 - **PDF Rendering**: PDF.js
 - **Frontend**: Vanilla JavaScript, HTML5, CSS3
 
-## Installation
+## Local Installation (For Developers)
 
-### Option 1: Use the Deployed Version
-Simply visit **[https://app-oblg.onrender.com/](https://app-oblg.onrender.com/)** and start reading together!
-
-### Option 2: Run Locally
+If you want to run this code on your own machine:
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd app
+   git clone https://github.com/your-username/Shared-Reading-Tool-Render.git
+   cd Shared-Reading-Tool-Render
    ```
 
 2. **Install dependencies**
@@ -69,11 +70,11 @@ Simply visit **[https://app-oblg.onrender.com/](https://app-oblg.onrender.com/)*
 
 ## Usage
 
-1. Open the application in multiple browser windows/tabs (or share the link with friends)
-2. Upload a PDF file in one window
-3. All connected users will see the same PDF
-4. Navigate through pages—everyone stays synchronized
-5. Use the chat panel to discuss the content in real-time
+1. Open the **[Live Demo link](https://app-oblg.onrender.com/)**.
+2. Share the URL with a friend (or open it in a second tab).
+3. Upload a PDF file.
+4. All connected users will see the same PDF instantly!
+5. Use the chat panel to discuss while you read.
 
 ## How It Works
 
@@ -90,7 +91,7 @@ Client 3 ──────┘
 ## Project Structure
 
 ```
-app/
+Shared-Reading-Tool-Render/
 ├── server.js           # Node.js server with WebSocket support
 ├── package.json        # Project dependencies
 ├── public/
